@@ -1,1 +1,37 @@
-Hi
+<%- include('./partials/header.ejs') %>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class=" col-12">
+          <h1>My reviews for books</h1>
+        </div>
+        <a id="newPostBtn" class="btn btn-large btn-success" href="/books/new">Add new review</a>
+      </div>
+
+      <div>
+        <ul id="postsList">
+          <% books.forEach(book=> { %>
+            <li>
+              <h2>
+                <%=book.title%>
+              </h2>
+              By <%= book.author%>
+                <small>
+                  <%=book.date%>
+                    <%=book.rating%>/10
+                </small>
+                <p>
+                  <%=book.review%>
+                </p>
+                <!-- <small>By: </small> -->
+                <a class="btn btn-primary" href="/books/edit/<%= book.id %>">Edit</a>
+                <a class="btn btn-danger" href="/books/delete/<%= book.id %>">Delete</a>
+            </li>
+            <% }); %>
+        </ul>
+      </div>
+
+  </body>
+
+  </html>

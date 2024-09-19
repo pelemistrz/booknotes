@@ -1,0 +1,62 @@
+<%- include('partials/header.ejs') %>
+
+  <body>
+    <div class="container">
+      <h1>
+        <%= heading %>
+      </h1>
+
+      <% if (locals.book) { %>
+        <form id="editForm" method="post" action="/books/edit/<%=book.id%>">
+
+          <input type="text" name="author" value="<%= book.author %>" placeholder="Author" required>
+
+          <input type="text" value="<%= book.title %>" name="title" placeholder="Title" required>
+
+          <input type="number" value="<%=book.rating%>" name="rating" placeholder="Rating" required>
+
+          <label for="date_read"> Date of read</label><input type="date" value="<%= book.date %>" name="date_read"
+            placeholder="Date of read" required>
+
+          <input type="text" name="link" value="<%= book.link %>" placeholder="Link for cover">
+
+
+          <textarea name="review" placeholder="Review" required rows="10"><%= book.review %></textarea>
+
+
+          <button class="full-width" type="submit">
+            <%= submit %>
+          </button>
+        </form>
+
+
+
+        <% } else {%>
+
+
+          <form id="newReviewForm" method="post" action="/books">
+            <input type="text" name="author" placeholder="Author" required>
+            <input type="text" name="title" placeholder="Title" required>
+
+            <input type="number" name="rating" placeholder="Rating" required>
+
+            <label for="date_read"> Date of read</label><input type="date" name="date_read" placeholder="Date of read"
+              required>
+
+            <input type="text" name="link" placeholder="Link for cover">
+
+
+            <textarea name="review" placeholder="Review" required rows="10"></textarea>
+
+
+
+            <button class="full-width" type="submit">
+              <%= submit %>
+            </button>
+          </form>
+          <% } %>
+
+    </div>
+  </body>
+
+  </html>
